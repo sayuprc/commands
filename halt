@@ -1,0 +1,22 @@
+#!/bin/bash
+
+DIR="$VM_ROOT/$1"
+
+if [ -z $1 ]; then
+	echo 'which directory?'
+	exit
+fi
+
+if [ ! -d $DIR ]; then
+	echo 'This directory is not existing.'
+	exit
+fi
+
+cd $DIR
+
+if [ ! -f Vagrantfile ]; then
+	echo 'Vagrantfile is not existing'
+	exit
+fi
+
+vagrant halt
